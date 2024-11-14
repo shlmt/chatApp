@@ -18,12 +18,16 @@ export class AuthService {
     private afs:AngularFirestore,
     private afAuth:AngularFireAuth,
     private router:Router ) {
+       const savedUserString = localStorage.getItem('user')
+       if(savedUserString) this.isLoggedIn$.next(true) 
       afAuth.authState.subscribe(user=>{
         if(user){
           this.userDetails$.next(user as User)
+           localStorage.setItem('user', 'true')//JSON.stringify(user))
           this.isLoggedIn$.next(true)
         }
         else{
+           localStorage.removeItem('user')
           this.isLoggedIn$.next(false)
         } 
       })
@@ -36,6 +40,7 @@ export class AuthService {
     public signOut = ():Promise<void> => {
       return this.afAuth.signOut().then(()=>{
         this.userDetails$.next(undefined)
+         localStorage.removeItem('user')
         this.router.navigate(['/'])
       });
     }
