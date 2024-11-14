@@ -1,0 +1,22 @@
+<header>
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>ng chat</span>
+        <span class="spacer"></span>
+        <button
+            mat-raised-button
+            (click)="loginWithGoogle()"
+            *ngIf="!(isLoggedIn$ | async); else log">
+            login
+        </button>
+        <ng-template #log>
+            <button
+                mat-raised-button
+                (click)="logout()">
+                logout
+            </button>
+        </ng-template>
+    </mat-toolbar>
+</header>

@@ -7,10 +7,12 @@ import { MaterialModule } from './material/material.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth'
-import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HeaderComponent } from './components/header/header.component'
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
