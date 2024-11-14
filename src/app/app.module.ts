@@ -8,11 +8,23 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { HeaderComponent } from './components/header/header.component'
+import { HeaderComponent } from './components/header/header.component';
+import { ChatContainerComponent } from './components/chat-container/chat-container.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { AddRoomComponent } from './components/add-room/add-room.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChatContainerComponent,
+    ChatComponent,
+    RoomListComponent,
+    AddRoomComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
