@@ -1,1 +1,11 @@
-<p>chat-container works!</p>
+<div class="chat-container">
+    <div class="room-list" *ngIf="rooms$ | async as rooms">
+        <app-room-list [rooms]="rooms"></app-room-list>
+    </div>
+    <div class="chat">
+        <h3>chat...</h3>
+    </div>
+    <div class="add-room">
+        <app-add-room></app-add-room>
+    </div>
+</div>

@@ -1,1 +1,7 @@
-<p>room-list works!</p>
+<div class="rooms">
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let room of rooms" [value]="room">
+          {{room.name}}
+        </mat-list-option>
+      </mat-selection-list>      
+</div>
