@@ -61,8 +61,10 @@ export class AuthService {
         displayName: user.displayName,
         photoURL: user.photoURL
       }
-      // const userRef:AngularFirestoreDocument<User> = this.afs.doc(`users/${user?.uid}`)
-      // return userRef.set(userData,{merge:true})
+      const userRef:AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
+      return userRef.set(userData, { merge: true }).catch(error => {
+        console.error('Error saving user data:', error);
+      })  
     }
 
 }
