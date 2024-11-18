@@ -15,11 +15,9 @@ export class ChatService {
     return this._db.collection('rooms').snapshotChanges().pipe(
       map(snaps=>snaps.map(snap=>{
         const id = snap.payload.doc.id
-        const room:ChatRoom = <ChatRoom>snap.payload.doc.data()
-        return <ChatRoom>{
-          ...room,
-          id
-      }}))
+        const room = snap.payload.doc.data() as ChatRoom
+        return {...room, id } as ChatRoom
+      }))
     )
   }
 
@@ -27,11 +25,8 @@ export class ChatService {
     return this._db.collection('rooms').doc(roomId).collection('messages').snapshotChanges().pipe(
       map(snaps=>snaps.map(snap=>{
         const id = snap.payload.doc.id
-        const msg:Message = <Message>snap.payload.doc.data()
-        return <Message>{
-          ...msg,
-          id
-        }
+        const msg = snap.payload.doc.data() as Message
+        return {...msg, id } as Message
       }))
     )
   }
