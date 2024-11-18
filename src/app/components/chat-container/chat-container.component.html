@@ -2,8 +2,9 @@
     <div class="room-list" *ngIf="rooms$ | async as rooms">
         <app-room-list [rooms]="rooms"></app-room-list>
     </div>
-    <div class="chat">
+    <div class="chat" *ngIf="messages$ | async as messages">
         <h3>chat...</h3>
+        <app-chat [messages]="messages"></app-chat>
     </div>
     <div class="add-room">
         <app-add-room></app-add-room>
