@@ -8,8 +8,17 @@ import { Message } from '../../models';
 })
 export class ChatComponent {
 
-  @Input() messages:Message[] = []
   @Output() onSendMsg:EventEmitter<string> = new EventEmitter()
+
+  @Input() set messages(messages:Message[]) {
+    this._messages = messages.sort((a,b) => a.timestamp - b.timestamp)  
+  }
+
+  private _messages:Message[] = []
+
+  get messages(){
+    return this._messages
+  }
 
   constructor() { }
 
