@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { ChatRoom, Message, User } from '../models';
+import { Observable } from 'rxjs';
+import { ChatRoom, Message } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
@@ -36,5 +36,15 @@ export class ChatService {
     const loggedUser = this.authService.getUserData()
     if(loggedUser)
         this._db.collection('rooms').add( { name:roomName, roomOwnerId:loggedUser.uid } )
+  }
+
+  public addMeasseageToRoom = (roomId:string, msg:string) => {
+    const loggedUser = this.authService.getUserData()
+    if(loggedUser)
+      this._db.collection('rooms').doc(roomId).collection('messages').add({
+        userId:loggedUser.uid,
+        timestamp: new Date().getTime(),
+        body:msg
+      })
   }
 }

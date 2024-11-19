@@ -4,7 +4,7 @@
     </div>
     <div class="chat" *ngIf="messages$ | async as messages">
         <h3>chat...</h3>
-        <app-chat [messages]="messages"></app-chat>
+        <app-chat [messages]="messages" (onSendMsg)="onSendMsg($event)"></app-chat>
     </div>
     <div class="add-room">
         <app-add-room-btn [onAddRoom]="addRoom"></app-add-room-btn>

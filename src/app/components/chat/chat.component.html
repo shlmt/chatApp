@@ -1,1 +1,11 @@
-<p>{{messages | json}}</p>
+<div class="chat" *ngIf="messages">
+    <div class="messages">
+        <div class="message" *ngFor="let message of messages">
+             {{message | json}}
+        </div>
+    </div>
+    <div class="input-msg">
+        <input type="text" #newMessage/>
+        <button (click)="sendMsg(newMessage)">send</button>
+    </div>
+</div>

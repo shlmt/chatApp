@@ -12,14 +12,14 @@ import { filter } from 'rxjs/operators';
 })
 export class ChatContainerComponent implements OnDestroy {
 
+  private roomId?:string
   private subscription = new Subscription()
 
   public rooms$:Observable<ChatRoom[]>
   public messages$?:Observable<Message[]>
 
   constructor(private chatService:ChatService,
-    private router:Router,
-    private activatedRoute:ActivatedRoute
+    private router:Router
   ) {
     this.rooms$ = chatService.getRooms()
 
@@ -28,7 +28,10 @@ export class ChatContainerComponent implements OnDestroy {
         .pipe(filter(e => e instanceof NavigationEnd))
         .subscribe(data =>{
           const urlArr = (data as RouterEvent).url.split('/')
-          if(urlArr.length>2) this.messages$ = chatService.getRoomMessages(urlArr[2])
+          if(urlArr.length>2) {
+            this.roomId = urlArr[2]
+            this.messages$ = chatService.getRoomMessages(urlArr[2])
+          }
       })
     )
   }
@@ -39,5 +42,10 @@ export class ChatContainerComponent implements OnDestroy {
 
   public addRoom = (roomName:string) => {
     this.chatService.addRoom(roomName)
+  }
+
+  public onSendMsg = (message:string) => {
+    if(this.roomId && message && message!='')
+      this.chatService.addMeasseageToRoom(this.roomId,message)
   }
 }

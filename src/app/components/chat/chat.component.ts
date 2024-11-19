@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Message } from '../../models';
 
 @Component({
@@ -9,7 +9,13 @@ import { Message } from '../../models';
 export class ChatComponent {
 
   @Input() messages:Message[] = []
+  @Output() onSendMsg:EventEmitter<string> = new EventEmitter()
 
   constructor() { }
+
+  public sendMsg = (input:HTMLInputElement) =>{
+    this.onSendMsg.emit(input.value)
+    input.value=''
+  }
 
 }
