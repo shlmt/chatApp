@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './chat-container.component.html',
   styleUrls: ['./chat-container.component.scss']
 })
-export class ChatContainerComponent implements OnInit, OnDestroy {
+export class ChatContainerComponent implements OnDestroy {
 
   private subscription = new Subscription()
 
@@ -31,9 +31,6 @@ export class ChatContainerComponent implements OnInit, OnDestroy {
           if(urlArr.length>2) this.messages$ = chatService.getRoomMessages(urlArr[2])
       })
     )
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy(): void {

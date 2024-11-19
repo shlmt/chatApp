@@ -7,17 +7,13 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   public isLoggedIn$:Observable<boolean>
 
   constructor(private authService:AuthService){
     this.isLoggedIn$ = authService.isLoggedIn()
   }
-
-  ngOnInit(): void {
-  }
-
   
   public loginWithGoogle=()=>{
     this.authService.signInWithGoogle()

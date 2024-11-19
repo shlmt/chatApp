@@ -6,13 +6,10 @@ import { Message } from '../../models';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
 
   @Input() messages:Message[] = []
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

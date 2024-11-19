@@ -6,13 +6,10 @@ import { ChatRoom } from '../../models';
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit {
+export class RoomListComponent {
   
   @Input() rooms:ChatRoom[] = []
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

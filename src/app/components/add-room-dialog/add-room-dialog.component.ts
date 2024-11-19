@@ -6,12 +6,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './add-room-dialog.component.html',
   styleUrls: ['./add-room-dialog.component.scss']
 })
-export class AddRoomDialogComponent implements OnInit {
+export class AddRoomDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AddRoomDialogComponent>) {}
-
-  ngOnInit(): void {
-  }
 
   closeModal(): void {
     this.dialogRef.close();

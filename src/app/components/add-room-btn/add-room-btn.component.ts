@@ -7,14 +7,11 @@ import { AddRoomDialogComponent } from '../add-room-dialog/add-room-dialog.compo
   templateUrl: './add-room-btn.component.html',
   styleUrls: ['./add-room-btn.component.scss']
 })
-export class AddRoomBtnComponent implements OnInit {
+export class AddRoomBtnComponent {
 
   @Input() onAddRoom!: (roomName: string) => void;
 
   constructor(public dialog:MatDialog) { }
-
-  ngOnInit(): void {
-  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddRoomDialogComponent, {
