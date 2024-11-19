@@ -12,9 +12,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
-import { AddRoomComponent } from './components/add-room/add-room.component';
+import { AddRoomBtnComponent } from './components/add-room-btn/add-room-btn.component';
 import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +23,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
     ChatContainerComponent,
     ChatComponent,
     RoomListComponent,
-    AddRoomComponent,
+    AddRoomBtnComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AddRoomDialogComponent
   ],
   imports: [
     BrowserModule,

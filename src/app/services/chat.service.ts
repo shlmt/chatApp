@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ChatRoom, Message } from '../models';
+import { ChatRoom, Message, User } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private _db:AngularFirestore) { }
+  constructor(private _db:AngularFirestore, private authService:AuthService) { }
 
   public getRooms=():Observable<ChatRoom[]>=>{
     return this._db.collection('rooms').snapshotChanges().pipe(
@@ -29,5 +30,11 @@ export class ChatService {
         return {...msg, id } as Message
       }))
     )
+  }
+
+  public addRoom = (roomName:string) => {
+    const loggedUser = this.authService.getUserData()
+    if(loggedUser)
+        this._db.collection('rooms').add( { roomName, roomOwnerId:loggedUser.uid } )
   }
 }

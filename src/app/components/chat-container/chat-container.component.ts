@@ -40,4 +40,7 @@ export class ChatContainerComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 
+  public addRoom = (roomName:string) => {
+    this.chatService.addRoom(roomName)
+  }
 }

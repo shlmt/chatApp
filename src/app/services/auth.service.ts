@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class AuthService {
 
   private isLoggedIn$ = new BehaviorSubject<boolean>(false)
-  private userDetails$ = new Subject<User>()
+  private userDetails$ = new BehaviorSubject<User|undefined>(undefined)
 
   constructor(
     private afs:AngularFirestore,
@@ -46,6 +46,8 @@ export class AuthService {
     }
 
     public isLoggedIn = ():Observable<boolean> => this.isLoggedIn$.asObservable()
+
+    public getUserData = ():User|undefined => this.userDetails$.value
 
     private authLogin = (provider:firebase.default.auth.AuthProvider) => {
       this.afAuth.signInWithPopup(provider).then(res=>{
