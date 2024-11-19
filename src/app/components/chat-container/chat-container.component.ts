@@ -15,7 +15,7 @@ export class ChatContainerComponent implements OnDestroy {
   private subscription = new Subscription()
 
   public rooms$:Observable<ChatRoom[]>
-  public messages$:Observable<Message[]> = new Observable<Message[]>()
+  public messages$?:Observable<Message[]>
 
   constructor(private chatService:ChatService,
     private router:Router,
