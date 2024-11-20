@@ -1,6 +1,14 @@
 header{
+    .homeLink{
+        font-size: x-large;
+    }
     .spacer {
         flex: 1 1 auto;
+    }
+    .link{
+        padding: 30px;
+        color: white;
+        text-decoration: none;
     }
 }
   

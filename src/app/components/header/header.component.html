@@ -1,9 +1,8 @@
 <header>
     <mat-toolbar color="primary">
-        <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
+        <button class="homeLink" mat-button routerLink="/">
+            NG Chat
         </button>
-        <span>ng chat</span>
         <span class="spacer"></span>
         <button
             mat-raised-button
@@ -12,6 +11,7 @@
             login
         </button>
         <ng-template #log>
+            <a class="link" routerLink="/chat">chat</a>
             <button
                 mat-raised-button
                 (click)="logout()">
