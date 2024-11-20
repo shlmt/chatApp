@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Message } from '../../models';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-chat',
@@ -24,7 +25,11 @@ export class ChatComponent {
     return this._messages
   }
 
-  constructor() { }
+  public loggedUserId:string = ''
+
+  constructor(private authService:AuthService) { 
+    this.loggedUserId = authService.getUserId() || ''
+  }
 
   public sendMsg = (input:HTMLInputElement) =>{
     this.onSendMsg.emit(input.value)

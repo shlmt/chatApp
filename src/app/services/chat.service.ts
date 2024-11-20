@@ -33,9 +33,9 @@ export class ChatService {
   }
 
   public addRoom = (roomName:string) => {
-    const loggedUser = this.authService.getUserData()
+    const loggedUser = this.authService.getUserId()
     if(loggedUser)
-        this._db.collection('rooms').add( { name:roomName, roomOwnerId:loggedUser.uid } )
+        this._db.collection('rooms').add( { name:roomName, roomOwnerId:loggedUser } )
   }
 
   public addMeasseageToRoom = (roomId:string, msg:string) => {

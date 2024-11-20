@@ -1,16 +1,110 @@
-.chat{
-    .messages{
-        height: 200px;
-        width: 200px;
-        margin: 25px 0 15px 0;
-        border: 3px solid #3f51b5
-    }
-    .message{
-        height: 30px;
-        padding: 3px;
-        padding-left: 7px;
-    }
-    .scroller{
+.chat {
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    width: 50vw; 
+    min-width: 300px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    .messages {
+      flex: 1;
+      overflow: hidden;
+      padding: 10px;
+  
+      .scroller {
         height: 100%;
+        overflow: auto;
+        padding-right: 5px;
+        scrollbar-color: #3f51b5 #f5f5f5; 
+        scrollbar-3dlight-color: #3f51b5;
+      }
+
+      .message {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 8px;
+        background-color: #f5f5f5;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .header-msg {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        
+            .sender {
+              font-weight: bold;
+              font-size: 14px;
+              color: #3f51b5;
+            }
+        
+            .hour {
+              font-size: 12px;
+              color: #999;
+            }
+          }
+        
+          .content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            text-wrap: wrap;
+          }
+        }
+        
+        .currentUser {
+            align-self: flex-end;
+            margin: 15px 10px;
+            margin-left: auto;
+        }      
     }
-}
+  
+    .input-msg {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      background-color: #f9f9f9;
+  
+      input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+  
+        &:focus {
+          outline: none;
+          border-color: #3f51b5;
+          box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
+        }
+      }
+
+      button {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #2e3e9d;
+        }
+  
+        &:active {
+          background-color: #1f2d7a;
+        }
+        .mat-icon{
+            height: 43px;
+            width: 45px;
+        }
+      }
+    }
+  }

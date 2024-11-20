@@ -48,6 +48,7 @@ export class AuthService {
     public isLoggedIn = ():Observable<boolean> => this.isLoggedIn$.asObservable()
 
     public getUserData = ():User|undefined => this.userDetails$.value
+    public getUserId = ():string|undefined => this.userDetails$.value?.uid
 
     private authLogin = (provider:firebase.default.auth.AuthProvider) => {
       this.afAuth.signInWithPopup(provider).then(res=>{

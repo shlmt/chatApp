@@ -1,13 +1,23 @@
 <div class="chat" *ngIf="messages">
     <div class="messages">
-        <cdk-virtual-scroll-viewport itemSize="30" class="scroller" #virtualScroll>
-            <div *cdkVirtualFor="let message of messages" class="message">
-                {{message.body}}
+        <cdk-virtual-scroll-viewport itemSize="80" class="scroller" #virtualScroll>
+            <div *cdkVirtualFor="let message of messages"
+                class="message" [ngClass]="{ 'currentUser': message.userId==loggedUserId }">
+                <div class="header-msg">
+                    <div class="sender">{{message.userId!=loggedUserId?message.userId.length:'you'}}</div>
+                    <div class="hour">{{message.timestamp | date:'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
+                  </div>
+                <div class="content">{{message.body}}</div>
             </div>  
         </cdk-virtual-scroll-viewport>
     </div>
     <div class="input-msg">
         <input type="text" #newMessage/>
-        <button (click)="sendMsg(newMessage)">send</button>
+        <button
+            mat-mini-fab
+            color="primary"
+            (click)="sendMsg(newMessage)">
+            <mat-icon>send</mat-icon>
+        </button>  
     </div>
 </div>
