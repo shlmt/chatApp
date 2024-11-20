@@ -1,8 +1,10 @@
 <div class="chat" *ngIf="messages">
     <div class="messages">
-        <div class="message" *ngFor="let message of messages">
-             {{message | json}}
-        </div>
+        <cdk-virtual-scroll-viewport itemSize="30" class="scroller" #virtualScroll>
+            <div *cdkVirtualFor="let message of messages" class="message">
+                {{message.body}}
+            </div>  
+        </cdk-virtual-scroll-viewport>
     </div>
     <div class="input-msg">
         <input type="text" #newMessage/>

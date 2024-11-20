@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Message } from '../../models';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-chat',
@@ -8,10 +9,13 @@ import { Message } from '../../models';
 })
 export class ChatComponent {
 
+  @ViewChild('virtualScroll') virtualScroll?:CdkVirtualScrollViewport
+
   @Output() onSendMsg:EventEmitter<string> = new EventEmitter()
 
   @Input() set messages(messages:Message[]) {
-    this._messages = messages.sort((a,b) => a.timestamp - b.timestamp)  
+    this._messages = messages.sort((a,b) => a.timestamp - b.timestamp) 
+    this.virtualScroll?.scrollToIndex(messages.length,'smooth')   
   }
 
   private _messages:Message[] = []

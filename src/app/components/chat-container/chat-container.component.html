@@ -3,7 +3,6 @@
         <app-room-list [rooms]="rooms"></app-room-list>
     </div>
     <div class="chat" *ngIf="messages$ | async as messages">
-        <h3>chat...</h3>
         <app-chat [messages]="messages" (onSendMsg)="onSendMsg($event)"></app-chat>
     </div>
     <div class="add-room">
