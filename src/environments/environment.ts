@@ -10,8 +10,8 @@ export const environment = {
     projectId: "ng-chat-1f814",
     storageBucket: "ng-chat-1f814.firebasestorage.app",
     messagingSenderId: "941156842101",
-    appId: "1:941156842101:web:7cab562e65fe2ae6f0563c",
-    measurementId: "G-GELWP3YZMP"
+    appId: "1:941156842101:web:ac8e59be6692bd18f0563c",
+    measurementId: "G-SZVKZ4TK5J"
   }
 };
 
