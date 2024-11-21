@@ -1,27 +1,48 @@
 # NgChat
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+A real-time chat application with multiple chat rooms, built with Angular, Firebase, and Angular Material.
 
-## Development server
+<img src="https://github.com/user-attachments/assets/fdbf5fc6-9630-49fc-b10f-c6a3f294b839" height="350px"/>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 🎉 Features
 
-## Code scaffolding
+- **Real-Time Chat:** Multiple chat rooms powered by Firestore database.
+- **Authentication:** Secure login using Firebase Authentication & Sign in with Google.
+- **Material Design:** Sleek and responsive UI using Angular Material.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🏆 Technologies
 
-## Build
+- ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**
+- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase Authentication + Firestore**
+- **Angular Material**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🚀 Getting Started
 
-## Running unit tests
+Follow these steps to set up the project:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository: ```git clone https://github.com/shlmt/ng-chat.git```
+2. Install dependencies: ```npm install```
+3. Run the application: ```ng serve```
+#### 🛠️ Firebase Configuration
+To connect the app with Firebase, you need to configure the Firebase API keys and other settings. Follow these steps:
+1. Go to the [Firebase Console](https://console.firebase.google.com/).
+2. Select your project or create a new one.
+3. In the project settings, navigate to the "General" tab and find your Firebase configuration, which will look like this:
+```javascript
+firebaseConfig: {
+  apiKey: "your-api-key",
+  authDomain: "your-project-id.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project-id.appspot.com",
+  messagingSenderId: "your-messaging-sender-id",
+  appId: "your-app-id",
+  measurementId: "your-measurement-id"
+}
+```
 
-## Running end-to-end tests
+## 📚 Credits
+Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/YouTube_icon_%282013-2017%29.png/20px-YouTube_icon_%282013-2017%29.png)](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn)
+[this course](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn). Thanks to the instructor for the amazing content! </br>
+*Note: This project includes personal solutions, modifications, and customizations beyond the original course content.*
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
