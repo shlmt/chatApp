@@ -42,7 +42,11 @@ export class ChatService {
     const loggedUser = this.authService.getUserData()
     if(loggedUser)
       this._db.collection('rooms').doc(roomId).collection('messages').add({
-        userId:loggedUser.uid,
+        sender:{
+          uid: loggedUser.uid,
+          username: loggedUser.displayName,
+          photoUrl: loggedUser.photoURL
+        },
         timestamp: new Date().getTime(),
         body:msg
       })

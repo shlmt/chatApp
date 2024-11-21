@@ -2,12 +2,17 @@
     <div class="messages">
         <cdk-virtual-scroll-viewport itemSize="80" class="scroller" #virtualScroll>
             <div *cdkVirtualFor="let message of messages"
-                class="message" [ngClass]="{ 'currentUser': message.userId==loggedUserId }">
+                class="message" [ngClass]="{ 'currentUser': message.sender.uid==loggedUserId }">
                 <div class="header-msg">
-                    <div class="sender">{{message.userId!=loggedUserId?message.userId.length:'you'}}</div>
-                    <div class="hour">{{message.timestamp | date:'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
-                  </div>
+                    <img 
+                        [src]="message.sender.photoUrl" 
+                        alt="User Photo" 
+                        class="profile-photo"
+                        [ngClass]="{ 'currentUserPhoto': message.sender.uid==loggedUserId }">
+                    <div class="sender">{{message.sender.uid!=loggedUserId ? message.sender.username : 'you'}}</div>
+                </div>
                 <div class="content">{{message.body}}</div>
+                <div class="hour">{{message.timestamp | date:'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
             </div>  
         </cdk-virtual-scroll-viewport>
     </div>

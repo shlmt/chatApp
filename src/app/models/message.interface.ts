@@ -1,6 +1,10 @@
 export interface Message {
     id:string,
-    userId:string,
+    sender:{
+        uid:string,
+        username:string,
+        photoUrl:string
+    },
     timestamp:number,
     body:string
 }

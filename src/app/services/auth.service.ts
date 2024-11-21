@@ -23,7 +23,7 @@ export class AuthService {
       afAuth.authState.subscribe(user=>{
         if(user){
           this.userDetails$.next(user as User)
-           localStorage.setItem('user', 'true')//JSON.stringify(user))
+           localStorage.setItem('user', 'true')
           this.isLoggedIn$.next(true)
         }
         else{
