@@ -4,6 +4,7 @@
           *ngFor="let room of rooms"
           [value]="room"
           [routerLink]="['/chat',room.id]"
+          [class.selected]="room.id==currentRoomId" 
         >
           {{room.name}}
         </mat-list-option>

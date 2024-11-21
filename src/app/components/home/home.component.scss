@@ -1,7 +1,26 @@
-.home{
-    margin: 40px;
-    h1{
-        font-size: 60px;
-        text-align: center;
-    }
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    padding: 20px;
+  .home-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3f51b5;
+  }
+  
+  .home-description {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+    max-width: 600px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
 }
+  

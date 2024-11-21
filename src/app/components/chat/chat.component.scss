@@ -16,6 +16,12 @@
       overflow: hidden;
       padding: 10px;
   
+      .noMsgs{
+        text-align: center;
+        color: rgb(87, 87, 87);
+        margin-top: 30px;
+      }
+
       .scroller {
         height: 100%;
         overflow: auto;

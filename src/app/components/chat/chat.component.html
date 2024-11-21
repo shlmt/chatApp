@@ -1,6 +1,7 @@
 <div class="chat" *ngIf="messages">
     <div class="messages">
-        <cdk-virtual-scroll-viewport itemSize="80" class="scroller" #virtualScroll>
+        <div class="noMsgs" *ngIf="messages.length==0">no messages yet.</div>
+        <cdk-virtual-scroll-viewport itemSize="100" class="scroller" #virtualScroll>
             <div *cdkVirtualFor="let message of messages"
                 class="message" [ngClass]="{ 'currentUser': message.sender.uid==loggedUserId }">
                 <div class="header-msg">
@@ -17,7 +18,7 @@
         </cdk-virtual-scroll-viewport>
     </div>
     <div class="input-msg">
-        <input type="text" #newMessage/>
+        <input type="text" #newMessage (keyup.enter)="sendMsg(newMessage)"/>
         <button
             mat-mini-fab
             color="primary"
