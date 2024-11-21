@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,11 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
 
   public isLoggedIn$:Observable<boolean>
+  public userDetails$:Observable<User|undefined>
 
   constructor(private authService:AuthService){
     this.isLoggedIn$ = authService.isLoggedIn()
+    this.userDetails$ = authService.subUserData()
   }
   
   public loginWithGoogle=()=>{

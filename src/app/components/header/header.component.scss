@@ -1,6 +1,21 @@
 header{
-    .homeLink{
-        font-size: x-large;
+    .userDetails {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        img {
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer; 
+            transition: transform 0.3s ease;
+
+            &:hover {
+            transform: scale(1.05);
+            }
+        }
     }
     .spacer {
         flex: 1 1 auto;

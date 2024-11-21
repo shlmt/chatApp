@@ -1,8 +1,9 @@
 <header>
     <mat-toolbar color="primary">
-        <button class="homeLink" mat-button routerLink="/">
-            NG Chat
-        </button>
+        <div class="userDetails" *ngIf="userDetails$ | async as userDetails">
+            <img  [src]="userDetails.photoURL" routerLink="/"/>
+            <h1> hi {{userDetails.displayName}} </h1>   
+        </div>
         <span class="spacer"></span>
         <button
             mat-raised-button

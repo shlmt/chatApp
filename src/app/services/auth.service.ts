@@ -47,7 +47,8 @@ export class AuthService {
 
     public isLoggedIn = ():Observable<boolean> => this.isLoggedIn$.asObservable()
 
-    public getUserData = ():User|undefined => this.userDetails$.value
+    public subUserData = ():Observable<User|undefined> => this.userDetails$.asObservable()
+    public getUserData = ():User|undefined => this.userDetails$?.value
     public getUserId = ():string|undefined => this.userDetails$.value?.uid
 
     private authLogin = (provider:firebase.default.auth.AuthProvider) => {
