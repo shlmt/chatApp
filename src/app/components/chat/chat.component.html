@@ -13,10 +13,10 @@
         <input type="text" #newMessage (keyup.enter)="sendMsg(newMessage, file)" />
         <label [class.file-selected]="isFileSelected" class="file-upload">
             <mat-icon>upload_file</mat-icon>
-            <input type="file" #file (change)="onUpload($event)" />
+            <input type="file" #file (change)="onUpload($event)"/>
         </label>
         <button mat-mini-fab color="primary" (click)="sendMsg(newMessage, file)">
-            <mat-icon class="send-icon">send</mat-icon>
+            <mat-icon>send</mat-icon>
         </button>
     </div>
 </div>
