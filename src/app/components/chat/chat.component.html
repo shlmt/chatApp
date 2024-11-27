@@ -2,27 +2,11 @@
     <div class="messages">
         <div class="noMsgs" *ngIf="messages.length==0">no messages yet.</div>
         <cdk-virtual-scroll-viewport itemSize="100" class="scroller" #virtualScroll>
-            <div *cdkVirtualFor="let message of messages"
-                class="message" [ngClass]="{ 'currentUser': message.sender.uid==loggedUserId }">
-                <div class="header-msg">
-                    <img 
-                        [src]="message.sender.photoUrl" 
-                        alt="User Photo" 
-                        class="profile-photo"
-                        [ngClass]="{ 'currentUserPhoto': message.sender.uid==loggedUserId }">
-                    <div class="sender">{{message.sender.uid!=loggedUserId ? message.sender.username : 'you'}}</div>
-                </div>
-                <div class="content">{{message.body}}</div>
-                <div *ngIf="message.file" class="file-attachment">
-                    <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
-                        <ng-container *ngIf="message.file.type.startsWith('image/')">
-                            <img [src]="message.file.url" alt="Preview" class="file-preview" />
-                        </ng-container>
-                        <span class="file-name">{{ message.file.name }}</span>
-                    </a>
-                </div>
-                <div class="hour">{{message.timestamp | date:'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
-            </div>  
+            <app-message
+                *cdkVirtualFor="let message of messages"
+                [message]="message"
+                [loggedUserId]="loggedUserId">
+            </app-message>
         </cdk-virtual-scroll-viewport>
     </div>
     <div class="input-msg">

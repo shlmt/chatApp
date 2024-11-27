@@ -15,7 +15,8 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { AddRoomBtnComponent } from './components/add-room-btn/add-room-btn.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component'
+import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
+import { MessageComponent } from './components/message/message.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-di
     AddRoomBtnComponent,
     HomeComponent,
     NotFoundComponent,
-    AddRoomDialogComponent
+    AddRoomDialogComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
