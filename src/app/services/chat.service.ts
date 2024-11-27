@@ -4,13 +4,20 @@ import { ChatRoom, Message } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { UploadService } from './upload.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  constructor(private _db:AngularFirestore, private authService:AuthService) { }
+  constructor(private _db:AngularFirestore,
+              private authService:AuthService,
+              private uploadService:UploadService) { }
+
+  private saveMessage = (roomId:string, msg:Message) => {
+    this._db.collection('rooms').doc(roomId).collection('messages').add(msg)
+  }
 
   public getRooms=():Observable<ChatRoom[]>=>{
     return this._db.collection('rooms').snapshotChanges().pipe(
@@ -38,17 +45,35 @@ export class ChatService {
         this._db.collection('rooms').add( { name:roomName, roomOwnerId:loggedUser } )
   }
 
-  public addMeasseageToRoom = (roomId:string, msg:string) => {
+  public addMeasseageToRoom = (roomId:string, content:string, file:File|null|undefined) => {
     const loggedUser = this.authService.getUserData()
-    if(loggedUser)
-      this._db.collection('rooms').doc(roomId).collection('messages').add({
+    if(loggedUser){
+      const msg = {
         sender:{
           uid: loggedUser.uid,
           username: loggedUser.displayName,
           photoUrl: loggedUser.photoURL
         },
         timestamp: new Date().getTime(),
-        body:msg
-      })
+        body:content
+      } as Message
+
+      if(file){
+        this.uploadService.uploadFile(file).subscribe({
+          next: url =>{
+            const f = {
+              url,
+              name:file.name,
+              type:file.type
+            }
+            this.saveMessage(roomId, {...msg, file:f})
+          },
+          error: err => {
+            console.error('Error uploading file:', err)
+          }
+        })
+      }
+      else this.saveMessage(roomId,msg)
+    }
   }
 }

@@ -77,12 +77,47 @@
               margin: 5px 0;
           }
 
-          .hour {
-                font-size: 12px;
-                color: #999;
-                margin-left: auto;
-            } 
-         }
+          .file-attachment {
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-start; 
+
+            .file-preview {
+              width: 50px;
+              height: 50px;
+              object-fit: cover;
+              border-radius: 5px;
+              border: 1px solid #ddd;
+          }
+
+          .download-link {
+              flex:1;
+              color: #007bff;
+              text-decoration: none;
+              font-weight: bold;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              word-break: break-word;
+
+              .file-name {
+                  flex: 1;
+              }
+            .file-name:hover {
+                text-decoration: underline;
+            }
+          }  
+                
+        }    
+
+        .hour {
+            font-size: 12px;
+            color: #999;
+            margin-left: auto;
+          } 
+        }
   
       .currentUser {
           align-self: flex-end;
@@ -92,7 +127,7 @@
       }
    
     }
-  
+
     .input-msg {
       display: flex;
       align-items: center;
@@ -100,37 +135,71 @@
       padding: 10px;
       border-top: 1px solid #ddd;
       background-color: #f9f9f9;
-  
-      input {
+    
+      input[type="text"] {
         flex: 1;
         padding: 10px;
-        border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 14px;
         color: #333;
-  
+        border: 1px solid #ccc;
+    
         &:focus {
           outline: none;
           border-color: #3f51b5;
           box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
         }
       }
+    
+      .file-upload {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        margin: -5px 5px 0 0 ;
+    
+        .send-icon {
+          font-size: 30px;
+          transition: color 0.3s ease;
+          color: #999;
+    
+          &:hover {
+            color: #4d5fc6;
+          }
+          &:focus {
+            color: #4d5fc6;
+          }
+        }
+    
+        input[type="file"] {
+          display: none;
+        }
+      }
+
+      .file-upload.file-selected mat-icon {
+        color: #3f51b5;
+      }
+      
 
       button {
         cursor: pointer;
         transition: background-color 0.3s ease;
-  
+    
         &:hover {
           background-color: #2e3e9d;
         }
-  
+    
         &:active {
           background-color: #1f2d7a;
         }
-        .mat-icon{
-            height: 43px;
-            width: 45px;
+    
+        mat-icon {
+          height: 26px;
+          width: 24px;
+          margin-left: 4px;
         }
       }
+    
     }
   }
+        
+  

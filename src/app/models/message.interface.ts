@@ -6,5 +6,10 @@ export interface Message {
         photoUrl:string
     },
     timestamp:number,
-    body:string
+    body:string,
+    file?:{
+        name:string,
+        url:string,
+        type:string
+    }
 }

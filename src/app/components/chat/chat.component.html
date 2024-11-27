@@ -13,17 +13,26 @@
                     <div class="sender">{{message.sender.uid!=loggedUserId ? message.sender.username : 'you'}}</div>
                 </div>
                 <div class="content">{{message.body}}</div>
+                <div *ngIf="message.file" class="file-attachment">
+                    <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
+                        <ng-container *ngIf="message.file.type.startsWith('image/')">
+                            <img [src]="message.file.url" alt="Preview" class="file-preview" />
+                        </ng-container>
+                        <span class="file-name">{{ message.file.name }}</span>
+                    </a>
+                </div>
                 <div class="hour">{{message.timestamp | date:'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
             </div>  
         </cdk-virtual-scroll-viewport>
     </div>
     <div class="input-msg">
-        <input type="text" #newMessage (keyup.enter)="sendMsg(newMessage)"/>
-        <button
-            mat-mini-fab
-            color="primary"
-            (click)="sendMsg(newMessage)">
-            <mat-icon>send</mat-icon>
-        </button>  
+        <input type="text" #newMessage (keyup.enter)="sendMsg(newMessage, file)" />
+        <label [class.file-selected]="isFileSelected" class="file-upload">
+            <mat-icon>upload_file</mat-icon>
+            <input type="file" #file (change)="onUpload($event)" />
+        </label>
+        <button mat-mini-fab color="primary" (click)="sendMsg(newMessage, file)">
+            <mat-icon class="send-icon">send</mat-icon>
+        </button>
     </div>
 </div>

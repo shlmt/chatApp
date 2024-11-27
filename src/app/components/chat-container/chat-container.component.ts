@@ -44,8 +44,8 @@ export class ChatContainerComponent implements OnDestroy {
     this.chatService.addRoom(roomName)
   }
 
-  public onSendMsg = (message:string) => {
-    if(this.roomId && message && message!='')
-      this.chatService.addMeasseageToRoom(this.roomId,message)
+  public onSendMsg = (payload:{message:string, file:File|null|undefined}) => {
+    if(this.roomId && ((payload.message && payload.message!='') || payload.file))
+      this.chatService.addMeasseageToRoom(this.roomId,payload.message,payload.file)
   }
 }
