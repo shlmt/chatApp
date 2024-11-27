@@ -47,8 +47,8 @@ Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4
 *Note: This project includes personal solutions, modifications, and customizations beyond the original course content.*
 
 ## 📷 Screenshots
-<img src="https://github.com/user-attachments/assets/fdbf5fc6-9630-49fc-b10f-c6a3f294b839" height="350px"/>
-<img src="https://github.com/user-attachments/assets/345d0bbb-415b-4e0c-a4be-d92fbba77cca" height="350px"/>
+<img src="https://github.com/user-attachments/assets/fdbf5fc6-9630-49fc-b10f-c6a3f294b839" height="300px"/>  
+<img src="https://github.com/user-attachments/assets/345d0bbb-415b-4e0c-a4be-d92fbba77cca" height="300px"/>
 
 
 
