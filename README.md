@@ -8,12 +8,13 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 
 - **Real-Time Chat:** Multiple chat rooms powered by Firestore database.
 - **Authentication:** Secure login using Firebase Authentication & Sign in with Google.
+- **File Attachments:** Attach files to messages, with a preview for image files.
 - **Material Design:** Sleek and responsive UI using Angular Material.
 
 ## 🏆 Technologies
 
 - ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**
-- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase Authentication + Firestore**
+- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase Authentication, Storage, Firestore**
 - **Angular Material**
 
 ## 🚀 Getting Started
