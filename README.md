@@ -2,8 +2,6 @@
 
 A real-time chat application with multiple chat rooms, built with Angular, Firebase, and Angular Material.
 
-<img src="https://github.com/user-attachments/assets/fdbf5fc6-9630-49fc-b10f-c6a3f294b839" height="350px"/>
-
 ## 🎉 Features
 
 - **Real-Time Chat:** Multiple chat rooms powered by Firestore database.
@@ -47,5 +45,11 @@ firebaseConfig: {
 Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/YouTube_icon_%282013-2017%29.png/20px-YouTube_icon_%282013-2017%29.png)](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn)
 [this course](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn). Thanks to the instructor for the amazing content! </br>
 *Note: This project includes personal solutions, modifications, and customizations beyond the original course content.*
+
+## 📷 Screenshots
+<img src="https://github.com/user-attachments/assets/fdbf5fc6-9630-49fc-b10f-c6a3f294b839" height="350px"/>
+<img src="https://github.com/user-attachments/assets/345d0bbb-415b-4e0c-a4be-d92fbba77cca" height="350px"/>
+
+
 
 
