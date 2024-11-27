@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models';
@@ -10,8 +10,12 @@ import { User } from '../../models';
 })
 export class HeaderComponent {
 
+  @Output() onChangeMode:EventEmitter<boolean> = new EventEmitter()
+
   public isLoggedIn$:Observable<boolean>
   public userDetails$:Observable<User|undefined>
+
+  public isDarkMode = false
 
   constructor(private authService:AuthService){
     this.isLoggedIn$ = authService.isLoggedIn()
@@ -24,6 +28,11 @@ export class HeaderComponent {
 
   public logout=()=>{
     this.authService.signOut()
+  }
+
+  public changeMode=()=>{
+    this.isDarkMode = !this.isDarkMode
+    this.onChangeMode.emit(this.isDarkMode)
   }
 
 }

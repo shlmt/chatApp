@@ -6,8 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-chat';
+  title = 'ng-chat'
+  public mode:'light'|'dark' = 'light'
 
   constructor(){
+  }
+
+  public onThemeChange=(isDarkMode:boolean)=>{
+    this.mode = isDarkMode ? 'dark' :'light'
   }
 }

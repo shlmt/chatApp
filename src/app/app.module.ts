@@ -16,7 +16,8 @@ import { AddRoomBtnComponent } from './components/add-room-btn/add-room-btn.comp
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
-import { MessageComponent } from './components/message/message.component'
+import { MessageComponent } from './components/message/message.component';
+import { DarkModeDirective } from './dark-mode.directive'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { MessageComponent } from './components/message/message.component'
     HomeComponent,
     NotFoundComponent,
     AddRoomDialogComponent,
-    MessageComponent
+    MessageComponent,
+    DarkModeDirective
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Message } from '../../models';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { AuthService } from 'src/app/services/auth.service';

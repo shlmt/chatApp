@@ -5,6 +5,9 @@
             <h1> hi {{userDetails.displayName}} </h1>   
         </div>
         <span class="spacer"></span>
+        <button mat-icon-button title="change theme" (click)="changeMode()">
+            <mat-icon>{{isDarkMode ? 'light_mode' : 'dark_mode'}}</mat-icon>
+         </button>
         <button
             mat-raised-button
             (click)="loginWithGoogle()"
