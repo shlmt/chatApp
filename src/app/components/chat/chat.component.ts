@@ -32,6 +32,7 @@ export class ChatComponent{
   }
 
   public loggedUserId:string = ''
+  public fileUploadName:string = ''
 
   constructor(private authService:AuthService) { 
     this.loggedUserId = authService.getUserId() || ''
@@ -45,14 +46,21 @@ export class ChatComponent{
       this.isFileSelected=false
       event.target.value=''
     }
-    else
+    else if(file){
       this.isFileSelected=true
+      this.fileUploadName=file.name
+    }
+    else{
+      this.isFileSelected=false
+      this.fileUploadName='' 
+    } 
   }
 
   public sendMsg = (input:HTMLInputElement, files:HTMLInputElement) =>{
     const file = files.files?.item(0)
     this.onSendMsg.emit({message:input.value, file:file})
     this.isFileSelected=false
+    this.fileUploadName=''
     input.value = ''
     files.value = ''
   }
