@@ -7,12 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-chat'
-  public mode:'light'|'dark' = 'light'
+  public mode:'light'|'dark' = JSON.parse(localStorage.getItem('darkmode') ?? 'true') ? 'light' : 'dark'
 
   constructor(){
   }
 
   public onThemeChange=(isDarkMode:boolean)=>{
     this.mode = isDarkMode ? 'dark' :'light'
+    localStorage.setItem('mode',JSON.stringify(isDarkMode))
   }
 }
