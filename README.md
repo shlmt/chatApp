@@ -10,6 +10,8 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - **Authentication:** Secure login using Firebase Authentication & Sign in with Google.
 - **File Attachments:** Attach files to messages, with a preview for image files.
 - **Material Design:** Sleek and responsive UI using Angular Material.
+- **Theme Switcher:** Switch between dark and light themes with CSS variables.
+
 
 ## 🏆 Technologies
 
