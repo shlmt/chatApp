@@ -16,6 +16,6 @@
         <span class="file-name">{{ message.file.name }}</span>
       </a>
     </div>
-    <div class="hour">{{ message.timestamp | date: 'dd/MM/yy HH:mm:ss':'Asia/Jerusalem' }}</div>
+    <div class="hour">{{ message.timestamp | relativeTime }}</div>
 </div>
   

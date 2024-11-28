@@ -17,7 +17,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
 import { MessageComponent } from './components/message/message.component';
-import { DarkModeDirective } from './dark-mode.directive'
+import { DarkModeDirective } from './dark-mode.directive';
+import { RelativeTimePipe } from './relative-time.pipe';
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,8 @@ import { DarkModeDirective } from './dark-mode.directive'
     NotFoundComponent,
     AddRoomDialogComponent,
     MessageComponent,
-    DarkModeDirective
+    DarkModeDirective,
+    RelativeTimePipe,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ import { DarkModeDirective } from './dark-mode.directive'
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
