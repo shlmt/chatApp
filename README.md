@@ -14,7 +14,7 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 ## 🏆 Technologies
 
 - ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**  (includes custom Pipe, custom Directive, Unit Tests with Karma & Jasmine etc.)
-- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase** Authentication, Storage, Firestore
+- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase** Google-Authentication, Storage, Firestore
 - **Angular Material**
 
 ## 🚀 Getting Started
