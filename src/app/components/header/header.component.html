@@ -7,7 +7,7 @@
         <span class="spacer"></span>
         <button mat-icon-button title="change theme" (click)="changeMode()">
             <mat-icon>{{isDarkMode ? 'light_mode' : 'dark_mode'}}</mat-icon>
-         </button>
+        </button>
         <button
             mat-raised-button
             (click)="loginWithGoogle()"
@@ -15,7 +15,7 @@
             login
         </button>
         <ng-template #log>
-            <a class="link" routerLink="/chat">chat</a>
+            <a class="chat-link" routerLink="/chat">chat</a>
             <button
                 mat-raised-button
                 (click)="logout()">

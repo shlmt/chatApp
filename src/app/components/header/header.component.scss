@@ -20,10 +20,13 @@ header{
     .spacer {
         flex: 1 1 auto;
     }
-    .link{
-        padding: 30px;
+    .chat-link{
+        padding: 15px;
         color: white;
         text-decoration: none;
+    }
+    .mat-raised-button{
+        margin-left: 10px;
     }
 }
   
