@@ -14,7 +14,7 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 ## 🏆 Technologies
 
 - ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**  (includes custom Pipe, custom Directive, Unit Tests with Karma & Jasmine etc.)
-- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase Authentication, Storage, Firestore**
+- ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase** Authentication, Storage, Firestore
 - **Angular Material**
 
 ## 🚀 Getting Started
@@ -23,7 +23,7 @@ Follow these steps to set up the project:
 
 1. Clone the repository: ```git clone https://github.com/shlmt/ng-chat.git```
 2. Install dependencies: ```npm install```
-3. Run the application: ```ng serve```
+3. Run the application: ```ng serve``` or Run unit-tests: ```ng test --include='src\app\relative-time.pipe.spec.ts'```
 #### 🛠️ Firebase Configuration
 To connect the app with Firebase, you need to configure the Firebase API keys and other settings. Follow these steps:
 1. Go to the [Firebase Console](https://console.firebase.google.com/).
