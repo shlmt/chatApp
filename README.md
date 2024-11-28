@@ -9,11 +9,11 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - **File Attachments:** Attach files to messages, with a preview for image files.
 - **Material Design:** Sleek and responsive UI using Angular Material.
 - **Theme Switcher:** Switch between dark and light themes with CSS variables.
-
+- **Relative Time Display:** Messages show timestamps like "just now," "a minute ago," or "yesterday at 14:35"
 
 ## 🏆 Technologies
 
-- ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**
+- ![Angular](https://img.shields.io/badge/Angular-12-brightgreen?style=for-the-badge&logo=angular&logoColor=white) **Angular 12**  (includes custom Pipe, custom Directive, Unit Tests with Karma & Jasmine etc.)
 - ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase Authentication, Storage, Firestore**
 - **Angular Material**
 
