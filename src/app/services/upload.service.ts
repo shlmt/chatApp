@@ -7,7 +7,7 @@ import { finalize } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UploadService {
-  progress: Observable<number|undefined>|null = null;
+  private progress$: Observable<number|undefined>|null = null;
 
   constructor(private storage: AngularFireStorage) { }
 
@@ -16,7 +16,7 @@ export class UploadService {
     const fileRef = this.storage.ref(filePath)
     const upload = this.storage.upload(filePath, file)
 
-    this.progress = upload.percentageChanges()
+    this.progress$ = upload.percentageChanges()
 
     return new Observable((observer) => {
       upload.snapshotChanges().pipe(
