@@ -1,7 +1,11 @@
 <header>
     <mat-toolbar color="primary">
         <div class="userDetails" *ngIf="userDetails$ | async as userDetails">
-            <img  [src]="userDetails.photoURL" routerLink="/"/>
+            <img
+                [src]="userDetails.photoURL"
+                [@rotate]="{ value: animationState, params: { duration: 700, degrees: 720 } }"
+                routerLink="/"
+            />
             <h1> hi {{userDetails.displayName}} </h1>   
         </div>
         <span class="spacer"></span>
