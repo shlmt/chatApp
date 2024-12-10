@@ -1,0 +1,20 @@
+<div class="dialog">
+    <div mat-dialog-actions color="primary">
+        <button mat-button mat-dialog-close color="primary"><mat-icon>close</mat-icon></button>
+        <div mat-dialog-title>Sign In method</div> 
+    </div>
+    <div mat-dialog-content>
+        <button mat-raised-button color="primary" (click)="signInWithGoogle()">
+            <img src="assets/google.svg" alt="Google" width="24" height="24"/>
+            <span>Sign in with Google</span>
+        </button>
+        <button mat-raised-button (click)="signInWithGithub()">
+            <img src="assets/github.svg" alt="Google" width="24" height="24"/>
+            <span>Sign in with GitHub</span>
+        </button>
+        <button mat-raised-button disabled="true" >
+            <mat-icon>email</mat-icon>
+            Sign in with email & password
+        </button>
+    </div>
+</div>

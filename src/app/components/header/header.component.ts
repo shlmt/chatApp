@@ -3,6 +3,8 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models';
 import { rotateAnimation } from 'angular-animations';
+import { MatDialog } from '@angular/material/dialog';
+import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -23,13 +25,26 @@ export class HeaderComponent {
 
   @Input('isDarkMode') isDarkMode:boolean = false
 
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService, private dialog: MatDialog){
     this.isLoggedIn$ = authService.isLoggedIn()
     this.userDetails$ = authService.subUserData()
+  }
+
+  openAuthDialog() {
+    this.dialog.open(SignInDialogComponent, {
+      data: {
+        loginWithGoogle: this.loginWithGoogle,
+        loginWithGithub: this.loginWithGithub,
+      },
+    });
   }
   
   public loginWithGoogle=()=>{
     this.authService.signInWithGoogle()
+  }
+
+  public loginWithGithub=()=>{
+    this.authService.signInWithGithub()
   }
 
   public logout=()=>{

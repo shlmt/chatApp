@@ -37,6 +37,10 @@ export class AuthService {
       this.authLogin(new firebase.default.auth.GoogleAuthProvider())
     }
 
+    public signInWithGithub = () => {
+      this.authLogin(new firebase.default.auth.GithubAuthProvider())
+    }
+
     public signOut = ():Promise<void> => {
       return this.afAuth.signOut().then(()=>{
         this.userDetails$.next(undefined)
@@ -54,17 +58,17 @@ export class AuthService {
     private authLogin = (provider:firebase.default.auth.AuthProvider) => {
       this.afAuth.signInWithPopup(provider).then(res=>{
         this.isLoggedIn$.next(true)
-        this.setUserData(res.user as User)
+        this.setUserData(res.user as User, res.additionalUserInfo?.username)
         this.router.navigate(['/chat'])
       });
     }
 
-    private setUserData = (user?:User):Promise<void>|void => {
+    private setUserData = (user?:User, username?:string|null):Promise<void>|void => {
       if(!user) return
       const userData:User = {
         uid: user.uid,
         email: user.email,
-        displayName: user.displayName,
+        displayName: user.displayName ?? username,
         photoURL: user.photoURL
       }
       const userRef:AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
