@@ -1,0 +1,11 @@
+<div class="input-msg">
+    <input type="text" [value]="inputValue" #newMessage (keyup.enter)="sendMsg(file)" />
+    <app-record-btn (onRecognize)="onRecognize($event)"></app-record-btn>
+    <label [class.file-selected]="isFileSelected" class="file-upload" [title]="fileUploadName">
+        <mat-icon>upload_file</mat-icon>
+        <input type="file" #file (change)="onUpload($event)"/>
+    </label>
+    <button mat-mini-fab color="primary" (click)="sendMsg(file)">
+        <mat-icon>send</mat-icon>
+    </button>
+</div>

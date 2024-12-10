@@ -1,5 +1,5 @@
-<div class="chat" *ngIf="messages">
-    <div class="messages">
+<div class="chat">
+    <div class="messages" *ngIf="messages">
         <div class="noMsgs" *ngIf="messages.length==0">no messages yet.</div>
         <cdk-virtual-scroll-viewport itemSize="130" class="scroller" #virtualScroll>
             <app-message
@@ -9,14 +9,5 @@
             </app-message>
         </cdk-virtual-scroll-viewport>
     </div>
-    <div class="input-msg">
-        <input type="text" #newMessage (keyup.enter)="sendMsg(newMessage, file)" />
-        <label [class.file-selected]="isFileSelected" class="file-upload" [title]="fileUploadName">
-            <mat-icon>upload_file</mat-icon>
-            <input type="file" #file (change)="onUpload($event)"/>
-        </label>
-        <button mat-mini-fab color="primary" (click)="sendMsg(newMessage, file)">
-            <mat-icon>send</mat-icon>
-        </button>
-    </div>
+    <app-input-chat (onSendMsg)="onSendMsg($event)"></app-input-chat>
 </div>

@@ -20,6 +20,8 @@ import { MessageComponent } from './components/message/message.component';
 import { DarkModeDirective } from './dark-mode.directive';
 import { RelativeTimePipe } from './relative-time.pipe';
 import { DatePipe } from '@angular/common';
+import { RecordBtnComponent } from './components/record-btn/record-btn.component';
+import { InputChatComponent } from './components/input-chat/input-chat.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { DatePipe } from '@angular/common';
     MessageComponent,
     DarkModeDirective,
     RelativeTimePipe,
+    RecordBtnComponent,
+    InputChatComponent,
   ],
   imports: [
     BrowserModule,

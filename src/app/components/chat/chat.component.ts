@@ -10,11 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ChatComponent{
 
-  isFileSelected: boolean|null = false
-
   @ViewChild('virtualScroll') virtualScroll?:CdkVirtualScrollViewport
 
-  @Output() onSendMsg:EventEmitter<{message:string, file:File|null|undefined}> = new EventEmitter()
+  @Output() onSendMsgOccurs:EventEmitter<{message:string, file:File|null|undefined}> = new EventEmitter()
 
   @Input() set messages(messages:Message[]) {
     this._messages = messages.sort((a,b) => a.timestamp - b.timestamp) 
@@ -32,37 +30,13 @@ export class ChatComponent{
   }
 
   public loggedUserId:string = ''
-  public fileUploadName:string = ''
 
   constructor(private authService:AuthService) { 
     this.loggedUserId = authService.getUserId() || ''
   }
 
-  public onUpload = (event:any) => {
-    const file = event.target.files[0]
-    const maxSize = 2 * 1024 * 1024
-    if (file && file.size > maxSize) {
-      alert('Error: File too large. Upload file up to 2MB')
-      this.isFileSelected=false
-      event.target.value=''
-    }
-    else if(file){
-      this.isFileSelected=true
-      this.fileUploadName=file.name
-    }
-    else{
-      this.isFileSelected=false
-      this.fileUploadName='' 
-    } 
-  }
-
-  public sendMsg = (input:HTMLInputElement, files:HTMLInputElement) =>{
-    const file = files.files?.item(0)
-    this.onSendMsg.emit({message:input.value, file:file})
-    this.isFileSelected=false
-    this.fileUploadName=''
-    input.value = ''
-    files.value = ''
+  onSendMsg = (event:{message:string, file:File|null|undefined}) => {
+    this.onSendMsgOccurs.emit(event)
   }
 
 }
