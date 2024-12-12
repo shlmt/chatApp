@@ -23,6 +23,7 @@ import { DatePipe } from '@angular/common';
 import { RecordBtnComponent } from './components/record-btn/record-btn.component';
 import { InputChatComponent } from './components/input-chat/input-chat.component';
 import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialo
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
