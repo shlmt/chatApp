@@ -32,7 +32,9 @@ export class ChatComponent{
   public loggedUserId:string = ''
 
   constructor(private authService:AuthService) { 
-    this.loggedUserId = authService.getUserId() || ''
+    this.authService.subUserData().subscribe(user => {
+      this.loggedUserId = user?.uid ?? ''
+    })
   }
 
   onSendMsg = (event:{message:string, file:File|null|undefined}) => {

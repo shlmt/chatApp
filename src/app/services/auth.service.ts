@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import * as firebase from 'firebase'
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { User } from '../models/user.interface';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth'
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { User } from '../models/user.interface'
+import { Router } from '@angular/router'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +20,26 @@ export class AuthService {
     private router:Router ) {
        const savedUserString = sessionStorage.getItem('user')
        if(savedUserString) this.isLoggedIn$.next(true) 
-      afAuth.authState.subscribe(user=>{
-        if(user){
-          this.userDetails$.next(user as User)
-          sessionStorage.setItem('user', 'true')
-          this.isLoggedIn$.next(true)
-        }
-        else{
-          sessionStorage.removeItem('user')
-          this.isLoggedIn$.next(false)
-        } 
-      })
-     }
+        afAuth.authState.subscribe(user=>{
+          if (user) {
+            if (user.displayName) {
+              this.userDetails$.next(user as User)
+              sessionStorage.setItem('user', 'true')
+            }
+            else {
+              this.getUserFromFirestore(user.uid)
+                .then(firestoreUser => {
+                  this.userDetails$.next(firestoreUser)
+                  sessionStorage.setItem('user', 'true')
+                })
+                .catch(() => sessionStorage.removeItem('user'))
+            }
+          }
+          else
+            sessionStorage.removeItem('user')
+          this.isLoggedIn$.next(!!user)
+        })
+    }
 
     public signInWithGoogle = ()=>{
       this.authLogin(new firebase.default.auth.GoogleAuthProvider())
@@ -46,7 +54,7 @@ export class AuthService {
         this.userDetails$.next(undefined)
         sessionStorage.removeItem('user')
         this.router.navigate(['/'])
-      });
+      })
     }
 
     public isLoggedIn = ():Observable<boolean> => this.isLoggedIn$.asObservable()
@@ -60,7 +68,7 @@ export class AuthService {
         this.isLoggedIn$.next(true)
         this.setUserData(res.user as User, res.additionalUserInfo?.username)
         this.router.navigate(['/chat'])
-      });
+      })
     }
 
     private setUserData = (user?:User, username?:string|null):Promise<void>|void => {
@@ -73,8 +81,21 @@ export class AuthService {
       }
       const userRef:AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
       return userRef.set(userData, { merge: true }).catch(error => {
-        console.error('Error saving user data:', error);
+        console.error('Error saving user data:', error)
       })  
     }
+
+    private getUserFromFirestore = (uid: string): Promise<User | undefined> => {
+      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`)
+      return userRef
+        .get()
+        .toPromise()
+        .then(doc => (doc.exists ? doc.data() as User : undefined))
+        .catch(error => {
+          console.error('Error reading user data from Firestore:', error)
+          return undefined
+        })
+    }
+    
 
 }
