@@ -50,7 +50,4 @@ Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4
 ## 📷 Screenshots
 <img src="https://github.com/user-attachments/assets/d9479772-f235-479a-87d0-74dcb11b3d07" height="300px"/>  
 <img src="https://github.com/user-attachments/assets/b48a7870-baf5-4ef4-b8b4-963b8993d072" height="300px"/>
-
-
-
-
+<img src="https://github.com/user-attachments/assets/6bea81d4-a299-4241-a11c-6242bba6ec23" height="300px"/>
