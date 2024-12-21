@@ -18,12 +18,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
 import { MessageComponent } from './components/message/message.component';
 import { DarkModeDirective } from './dark-mode.directive';
-import { RelativeTimePipe } from './relative-time.pipe';
+import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { DatePipe } from '@angular/common';
 import { RecordBtnComponent } from './components/record-btn/record-btn.component';
 import { InputChatComponent } from './components/input-chat/input-chat.component';
 import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { LinkTagPipe } from './pipes/link-tag.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     RecordBtnComponent,
     InputChatComponent,
     SignInDialogComponent,
+    LinkTagPipe,
   ],
   imports: [
     BrowserModule,
