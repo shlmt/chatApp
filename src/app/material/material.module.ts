@@ -8,6 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules=[
   MatIconModule,
@@ -17,7 +18,8 @@ const materialModules=[
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  ScrollingModule
+  ScrollingModule,
+  MatSnackBarModule,
 ]
 
 @NgModule({

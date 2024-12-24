@@ -25,6 +25,7 @@ import { InputChatComponent } from './components/input-chat/input-chat.component
 import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { LinkTagPipe } from './pipes/link-tag.pipe';
+import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.directive';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LinkTagPipe } from './pipes/link-tag.pipe';
     InputChatComponent,
     SignInDialogComponent,
     LinkTagPipe,
+    CopyOnDoubleclickDirective,
   ],
   imports: [
     BrowserModule,

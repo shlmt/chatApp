@@ -29,7 +29,7 @@ export class DarkModeDirective implements OnChanges {
       this.renderer.appendChild(this.el.nativeElement, newLinkElement);
     }
   }
-
+  
   private applyTheme = (theme: 'light' | 'dark') => {
     const root = document.documentElement;
   

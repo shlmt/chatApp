@@ -5,7 +5,8 @@
             <app-message
                 *cdkVirtualFor="let message of messages"
                 [message]="message"
-                [loggedUserId]="loggedUserId">
+                [loggedUserId]="loggedUserId"
+                appCopyOnDoubleclick>
             </app-message>
         </cdk-virtual-scroll-viewport>
     </div>
