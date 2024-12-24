@@ -17,7 +17,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
 import { MessageComponent } from './components/message/message.component';
-import { DarkModeDirective } from './dark-mode.directive';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { DatePipe } from '@angular/common';
 import { RecordBtnComponent } from './components/record-btn/record-btn.component';
@@ -39,7 +38,6 @@ import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.dir
     NotFoundComponent,
     AddRoomDialogComponent,
     MessageComponent,
-    DarkModeDirective,
     RelativeTimePipe,
     RecordBtnComponent,
     InputChatComponent,
