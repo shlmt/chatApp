@@ -7,7 +7,7 @@ export class FocusOnLoadDirective {
 
   constructor(private el: ElementRef) {}
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     const input = this.el.nativeElement.querySelector('input')
     input.focus()
   }
