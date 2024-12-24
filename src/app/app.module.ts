@@ -25,6 +25,7 @@ import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialo
 import { FormsModule } from '@angular/forms';
 import { LinkTagPipe } from './pipes/link-tag.pipe';
 import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.directive';
+import { FocusOnLoadDirective } from './directives/focus-on-load.directive';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.dir
     SignInDialogComponent,
     LinkTagPipe,
     CopyOnDoubleclickDirective,
+    FocusOnLoadDirective,
   ],
   imports: [
     BrowserModule,
