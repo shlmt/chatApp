@@ -13,7 +13,7 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - **Double-click to Copy:** Double-click a message to copy its content to the clipboard.
 - **Relative Time Display:** Messages show timestamps like "just now," "a minute ago," or "yesterday at 14:35".
 - **Links Display:** Detects URLs in text and renders them as clickable, styled links (securely sanitized by Angular).
-
+- **Keyboard Shortcuts:** Custom shortcuts for quick actions.
 
 ## 🏆 Technologies
 
