@@ -14,6 +14,7 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - **Relative Time Display:** Messages show timestamps like "just now," "a minute ago," or "yesterday at 14:35".
 - **Links Display:** Detects URLs in text and renders them as clickable, styled links (securely sanitized by Angular).
 - **Keyboard Shortcuts:** Custom shortcuts for quick actions.
+- **Emoji Reactions:** React to messages with emojis using a custom-built emoji keyboard.
 
 ## 🏆 Technologies
 
@@ -21,8 +22,11 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - ![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) **Firebase** Google-Authentication, Storage, Firestore
 - **Angular Material**
 
-## 🚀 Getting Started
 
+<details>
+ <summary>
+   🚀 Getting Started
+</summary>
 Follow these steps to set up the project:
 
 1. Clone the repository: ```git clone https://github.com/shlmt/ng-chat.git```
@@ -44,6 +48,7 @@ firebaseConfig: {
   measurementId: "your-measurement-id"
 }
 ```
+</details>
 
 ## 📚 Credits
 Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/YouTube_icon_%282013-2017%29.png/20px-YouTube_icon_%282013-2017%29.png)](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn)
