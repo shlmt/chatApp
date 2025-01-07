@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Message } from '../../models';
+import detectTextDirection from 'src/app/utils';
 
 @Component({
   selector: 'app-message',
@@ -7,6 +8,7 @@ import { Message } from '../../models';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent {
+  detectTextDirection = detectTextDirection
 
   @Input() message!:Message
   @Input() loggedUserId!: string

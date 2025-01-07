@@ -7,7 +7,11 @@
         [ngClass]="{ 'currentUserPhoto': message.sender.uid == loggedUserId }">
       <div class="sender">{{ message.sender.uid != loggedUserId ? message.sender.username : 'you' }}</div>
     </div>
-    <div class="content" [innerHtml]="message.body | linkTag"></div>
+    <div class="content"
+      [innerHtml]="message.body | linkTag"
+      [style.text-align]="detectTextDirection(message.body)"
+      [style.direction]="detectTextDirection(message.body)=='right'?'rtl':'ltr'"
+    ></div>
     <div class="reactions">
       <div class="emoji"
         *ngFor="let emoji of message.reactions | filterNonEmptyReactions | keyvalue" 

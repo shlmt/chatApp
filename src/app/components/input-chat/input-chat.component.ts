@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core'
+import detectTextDirection from 'src/app/utils'
 
 @Component({
   selector: 'app-input-chat',
@@ -6,6 +7,7 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core'
   styleUrls: ['./input-chat.component.scss']
 })
 export class InputChatComponent {
+  detectTextDirection = detectTextDirection
   isFileSelected: boolean|null = false
   fileUploadName:string = ''
 

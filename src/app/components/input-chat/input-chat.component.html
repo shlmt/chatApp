@@ -1,5 +1,10 @@
 <div class="input-msg">
-    <input type="text" [(ngModel)]="inputValue" #newMessage (keyup.enter)="sendMsg(file)" />
+    <input type="text"
+        [(ngModel)]="inputValue"
+        [style.text-align]="detectTextDirection(inputValue)"
+        [style.direction]="detectTextDirection(inputValue)=='right'?'rtl':'ltr'"  
+        #newMessage
+        (keyup.enter)="sendMsg(file)" />
     <app-record-btn (onRecognize)="onRecognize($event)"></app-record-btn>
     <label [class.file-selected]="isFileSelected" class="file-upload" [title]="fileUploadName">
         <mat-icon>upload_file</mat-icon>
