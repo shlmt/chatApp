@@ -11,5 +11,8 @@ export interface Message {
         name:string,
         url:string,
         type:string
+    },
+    reactions:{
+        [emoji:string]: string[]
     }
 }

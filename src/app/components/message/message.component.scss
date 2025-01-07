@@ -80,6 +80,31 @@
           
   }    
 
+  .reactions{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0;
+    gap: 7px;
+
+    .emoji{
+      padding: 2px 5px;
+      display: flex;
+      cursor: pointer;
+      color: var(--primary-color-hover);
+      border: 1px solid #ccc; 
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); 
+      }
+
+      .count{
+        padding: 0 3px;
+      }
+    }
+  }
+
   .hour {
       font-size: 12px;
       color: #999;

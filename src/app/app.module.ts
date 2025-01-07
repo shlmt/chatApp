@@ -24,6 +24,8 @@ import { RecordBtnComponent } from './components/record-btn/record-btn.component
 import { InputChatComponent } from './components/input-chat/input-chat.component';
 import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { EmojiKeyboardComponent } from './components/emoji-keyboard/emoji-keyboard.component';
+import { FilterReactionsPipe } from './pipes/filter-reactions.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { FormsModule } from '@angular/forms';
     RecordBtnComponent,
     InputChatComponent,
     SignInDialogComponent,
+    EmojiKeyboardComponent,
+    FilterReactionsPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div class="emoji-keyboard">
+    <button mat-icon-button color="primary" (click)="toggleKeyboard()">
+        <mat-icon>add_reaction</mat-icon>
+    </button>
+    <div class="emoji-list" *ngIf="isOpen">
+      <span
+        *ngFor="let emoji of emojis"
+        (click)="selectEmoji(emoji)"
+        class="emoji-item"
+      >
+        {{ emoji }}
+      </span>
+    </div>
+</div>
+  

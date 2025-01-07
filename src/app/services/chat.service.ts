@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { ChatRoom, Message } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { UploadService } from './upload.service';
+import * as firebase from 'firebase'
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,25 @@ export class ChatService {
         })
       }
       else this.saveMessage(roomId,msg)
+    }
+  }
+
+  public updateReactionToMessage = async (roomId:string, messageId:string, emoji:string, isExist:boolean) => {    
+    const loggedUser = this.authService.getUserData()
+    if(loggedUser){
+      const messageRef = this._db.collection('rooms').doc(roomId).collection('messages').doc(messageId)
+      if(messageRef){
+        await messageRef.set(
+          {
+            reactions: {
+              [emoji]: isExist
+              ? firebase.default.firestore.FieldValue.arrayRemove(loggedUser.uid)
+              : firebase.default.firestore.FieldValue.arrayUnion(loggedUser.uid)    
+            }
+          },
+          { merge: true }
+        )
+      }
     }
   }
 }

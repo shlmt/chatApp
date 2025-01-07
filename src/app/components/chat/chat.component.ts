@@ -13,6 +13,7 @@ export class ChatComponent{
   @ViewChild('virtualScroll') virtualScroll?:CdkVirtualScrollViewport
 
   @Output() onSendMsgOccurs:EventEmitter<{message:string, file:File|null|undefined}> = new EventEmitter()
+  @Output() onAddReactionOccurs:EventEmitter<{messageId:string, emoji:string, isExist:boolean}> = new EventEmitter()
 
   @Input() set messages(messages:Message[]) {
     this._messages = messages.sort((a,b) => a.timestamp - b.timestamp) 

@@ -16,6 +16,15 @@
         <span class="file-name">{{ message.file.name }}</span>
       </a>
     </div>
+    <div class="reactions">
+      <div class="emoji"
+        *ngFor="let emoji of message.reactions | filterNonEmptyReactions | keyvalue" 
+        (click)="addReaction(emoji.key)">
+          <div class="key">{{emoji.key}}</div> 
+          <div class="count">{{emoji.value.length}}</div>
+      </div>
+      <app-emoji-keyboard (emojiSelected)="addReaction($event)"></app-emoji-keyboard>
+    </div>
     <div class="hour">{{ message.timestamp | relativeTime }}</div>
 </div>
   

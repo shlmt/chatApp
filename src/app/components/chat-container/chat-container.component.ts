@@ -48,4 +48,9 @@ export class ChatContainerComponent implements OnDestroy {
     if(this.roomId && ((payload.message && payload.message!='') || payload.file))
       this.chatService.addMeasseageToRoom(this.roomId,payload.message,payload.file)
   }
+
+  public onAddReaction = (payload:{messageId:string, emoji:string, isExist:boolean}) => {
+    if(this.roomId && payload.messageId)
+      this.chatService.updateReactionToMessage(this.roomId, payload.messageId, payload.emoji, payload.isExist)
+  }
 }
