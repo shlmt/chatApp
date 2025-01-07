@@ -20,6 +20,7 @@ export class KeyboardShortcutsService {
 
   private handleKeyDown(event: KeyboardEvent) {
     const keyCombo = `${event.ctrlKey ? 'Ctrl+' : ''}${event.shiftKey ? 'Shift+' : ''}${event.altKey ? 'Alt+' : ''}${event.key}`
+    const currentUrl = this.router.url
 
     switch (keyCombo) {
       case 'Shift+C':
@@ -29,11 +30,19 @@ export class KeyboardShortcutsService {
         this.router.navigateByUrl('/')
         break
       case 'Shift++':
-        const currentUrl = this.router.url
         if (currentUrl.startsWith('/chat')) {
           const currentId = currentUrl.split('/').pop() ?? this.roomsIds[0]
           const currentIndex = this.roomsIds.indexOf(currentId)
           const nextIndex = (currentIndex + 1) % this.roomsIds.length
+          const nextId = this.roomsIds[nextIndex]
+          if(nextId) this.router.navigate([`/chat/${nextId}`])
+        }      
+        break
+      case 'Shift+-':
+        if (currentUrl.startsWith('/chat')) {
+          const currentId = currentUrl.split('/').pop() ?? this.roomsIds[0]
+          const currentIndex = this.roomsIds.indexOf(currentId)
+          const nextIndex = currentIndex==0 ? this.roomsIds.length-1 : (currentIndex - 1) % this.roomsIds.length
           const nextId = this.roomsIds[nextIndex]
           if(nextId) this.router.navigate([`/chat/${nextId}`])
         }      
