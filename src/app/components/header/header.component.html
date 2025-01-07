@@ -15,7 +15,7 @@
         <button
             mat-raised-button
             (click)="openAuthDialog()"
-            *ngIf="!(isLoggedIn$ | async); else log">
+            *ngIf="!isLoggedIn; else log">
             login
         </button>
         <ng-template #log>

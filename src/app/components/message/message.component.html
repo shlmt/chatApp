@@ -7,11 +7,11 @@
         [ngClass]="{ 'currentUserPhoto': message.sender.uid == loggedUserId }">
       <div class="sender">{{ message.sender.uid != loggedUserId ? message.sender.username : 'you' }}</div>
     </div>
-    <div class="content">{{ message.body }}</div>
+    <div class="content" [innerHtml]="message.body | linkTag"></div>
     <div *ngIf="message.file" class="file-attachment">
       <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
         <ng-container *ngIf="message.file.type.startsWith('image/')">
-          <img [src]="message.file.url" alt="Preview" class="file-preview" />
+          <img [src]="message.file.url" alt="Preview" class="img-preview" />
         </ng-container>
         <span class="file-name">{{ message.file.name }}</span>
       </a>

@@ -5,6 +5,7 @@ import { User } from '../../models';
 import { rotateAnimation } from 'angular-animations';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component';
+import { KeyboardShortcutsService } from 'src/app/services/keyboard-shortcuts.service';
 
 @Component({
   selector: 'app-header',
@@ -20,14 +21,24 @@ export class HeaderComponent {
 
   @Output() onChangeMode:EventEmitter<boolean> = new EventEmitter()
 
-  public isLoggedIn$:Observable<boolean>
+  public isLoggedIn:boolean = false
   public userDetails$:Observable<User|undefined>
 
   @Input('isDarkMode') isDarkMode:boolean = false
 
-  constructor(private authService:AuthService, private dialog: MatDialog){
-    this.isLoggedIn$ = authService.isLoggedIn()
+  constructor(private authService:AuthService, private dialog: MatDialog, private keyboardShortcuts:KeyboardShortcutsService){
+    authService.isLoggedIn().subscribe(isLogged =>
+      this.isLoggedIn=isLogged
+    )
     this.userDetails$ = authService.subUserData()
+    keyboardShortcuts.handleKeySubject$.subscribe(keyDown=>{
+      if(keyDown=='Shift+!') this.changeMode()
+      else if(keyDown=='Shift+L'){
+        if (this.isLoggedIn) 
+          this.logout()
+        else this.openAuthDialog()
+      }
+    })
   }
 
   openAuthDialog() {

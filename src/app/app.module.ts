@@ -17,8 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddRoomDialogComponent } from './components/add-room-dialog/add-room-dialog.component';
 import { MessageComponent } from './components/message/message.component';
-import { DarkModeDirective } from './dark-mode.directive';
-import { RelativeTimePipe } from './relative-time.pipe';
+import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { DatePipe } from '@angular/common';
 import { RecordBtnComponent } from './components/record-btn/record-btn.component';
 import { InputChatComponent } from './components/input-chat/input-chat.component';
@@ -26,6 +25,9 @@ import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialo
 import { FormsModule } from '@angular/forms';
 import { EmojiKeyboardComponent } from './components/emoji-keyboard/emoji-keyboard.component';
 import { FilterReactionsPipe } from './pipes/filter-reactions.pipe';
+import { LinkTagPipe } from './pipes/link-tag.pipe';
+import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.directive';
+import { FocusOnLoadDirective } from './directives/focus-on-load.directive';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,15 @@ import { FilterReactionsPipe } from './pipes/filter-reactions.pipe';
     NotFoundComponent,
     AddRoomDialogComponent,
     MessageComponent,
-    DarkModeDirective,
     RelativeTimePipe,
     RecordBtnComponent,
     InputChatComponent,
     SignInDialogComponent,
     EmojiKeyboardComponent,
-    FilterReactionsPipe
+    FilterReactionsPipe,
+    LinkTagPipe,
+    CopyOnDoubleclickDirective,
+    FocusOnLoadDirective,
   ],
   imports: [
     BrowserModule,

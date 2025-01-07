@@ -6,9 +6,10 @@
                 *cdkVirtualFor="let message of messages"
                 [message]="message"
                 [loggedUserId]="loggedUserId"
-                (onAddReaction)="onAddReactionOccurs.emit($event)">
+                (onAddReaction)="onAddReactionOccurs.emit($event)"
+                appCopyOnDoubleclick>
             </app-message>
         </cdk-virtual-scroll-viewport>
     </div>
-    <app-input-chat (onSendMsg)="onSendMsg($event)"></app-input-chat>
+    <app-input-chat (onSendMsg)="onSendMsg($event)" appFocusOnLoad></app-input-chat>
 </div>

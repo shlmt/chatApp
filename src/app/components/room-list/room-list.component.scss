@@ -1,4 +1,7 @@
-.mat-list-option.selected {
+.mat-list-item{
+    cursor: pointer;
+}
+
+.mat-list-item.selected {
     background-color: var(--second-color);
 }
-  

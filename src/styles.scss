@@ -13,4 +13,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body {
     background-color: var(--background-color);
     color: var(--text-color);
+    ::selection{
+        color: var(--second-color);
+        background-color: var(--primary-color);
+    }
 }

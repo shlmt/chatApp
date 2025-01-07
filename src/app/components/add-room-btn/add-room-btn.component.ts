@@ -19,7 +19,7 @@ export class AddRoomBtnComponent {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      this.onAddRoom(result)
+      if(result) this.onAddRoom(result)
     })
   }
 
