@@ -8,14 +8,6 @@
       <div class="sender">{{ message.sender.uid != loggedUserId ? message.sender.username : 'you' }}</div>
     </div>
     <div class="content" [innerHtml]="message.body | linkTag"></div>
-    <div *ngIf="message.file" class="file-attachment">
-      <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
-        <ng-container *ngIf="message.file.type.startsWith('image/')">
-          <img [src]="message.file.url" alt="Preview" class="img-preview" />
-        </ng-container>
-        <span class="file-name">{{ message.file.name }}</span>
-      </a>
-    </div>
     <div class="reactions">
       <div class="emoji"
         *ngFor="let emoji of message.reactions | filterNonEmptyReactions | keyvalue" 
@@ -24,6 +16,14 @@
           <div class="count">{{emoji.value.length}}</div>
       </div>
       <app-emoji-keyboard (emojiSelected)="addReaction($event)"></app-emoji-keyboard>
+    </div>
+    <div *ngIf="message.file" class="file-attachment">
+      <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
+        <ng-container *ngIf="message.file.type.startsWith('image/')">
+          <img [src]="message.file.url" alt="Preview" class="img-preview" />
+        </ng-container>
+        <span class="file-name">{{ message.file.name }}</span>
+      </a>
     </div>
     <div class="hour">{{ message.timestamp | relativeTime }}</div>
 </div>

@@ -1,7 +1,7 @@
 <div class="chat">
     <div class="messages" *ngIf="messages">
         <div class="noMsgs" *ngIf="messages.length==0">no messages yet.</div>
-        <cdk-virtual-scroll-viewport itemSize="130" class="scroller" #virtualScroll>
+        <cdk-virtual-scroll-viewport itemSize="170" class="scroller" #virtualScroll>
             <app-message
                 *cdkVirtualFor="let message of messages"
                 [message]="message"
