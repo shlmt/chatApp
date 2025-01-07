@@ -23,13 +23,13 @@ export class KeyboardShortcutsService {
     const currentUrl = this.router.url
 
     switch (keyCombo) {
-      case 'Shift+C':
+      case 'Alt+*':
         this.router.navigateByUrl('/chat')
         break
-      case 'Shift+H':
+      case 'Alt+/':
         this.router.navigateByUrl('/')
         break
-      case 'Shift++':
+      case 'Alt++':
         if (currentUrl.startsWith('/chat')) {
           const currentId = currentUrl.split('/').pop() ?? this.roomsIds[0]
           const currentIndex = this.roomsIds.indexOf(currentId)
@@ -38,7 +38,7 @@ export class KeyboardShortcutsService {
           if(nextId) this.router.navigate([`/chat/${nextId}`])
         }      
         break
-      case 'Shift+-':
+      case 'Alt+-':
         if (currentUrl.startsWith('/chat')) {
           const currentId = currentUrl.split('/').pop() ?? this.roomsIds[0]
           const currentIndex = this.roomsIds.indexOf(currentId)
@@ -47,10 +47,10 @@ export class KeyboardShortcutsService {
           if(nextId) this.router.navigate([`/chat/${nextId}`])
         }      
         break
-      case 'Shift+!':
+      case 'Alt+1':
         this.handleKeySubject.next(keyCombo)
         break
-      case 'Shift+L':
+      case 'Alt+0':
         this.handleKeySubject.next(keyCombo)
         break
       default:

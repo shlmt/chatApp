@@ -32,8 +32,8 @@ export class HeaderComponent {
     )
     this.userDetails$ = authService.subUserData()
     keyboardShortcuts.handleKeySubject$.subscribe(keyDown=>{
-      if(keyDown=='Shift+!') this.changeMode()
-      else if(keyDown=='Shift+L'){
+      if(keyDown=='Alt+1') this.changeMode()
+      else if(keyDown=='Alt+0'){
         if (this.isLoggedIn) 
           this.logout()
         else this.openAuthDialog()
