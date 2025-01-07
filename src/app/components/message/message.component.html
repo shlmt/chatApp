@@ -1,4 +1,4 @@
-<div class="message" [ngClass]="{ 'currentUser': message.sender.uid == loggedUserId }">
+<div class="message" [ngClass]="{ 'currentUser': message.sender.uid == loggedUserId }" appCopyOnDoubleclick>
     <div class="header-msg">
       <img 
         [src]="message.sender.photoUrl" 
@@ -13,13 +13,13 @@
       [style.direction]="detectTextDirection(message.body)=='right'?'rtl':'ltr'"
     ></div>
     <div class="reactions">
+      <app-emoji-keyboard (emojiSelected)="addReaction($event)"></app-emoji-keyboard>
       <div class="emoji"
         *ngFor="let emoji of message.reactions | filterNonEmptyReactions | keyvalue" 
         (click)="addReaction(emoji.key)">
           <div class="key">{{emoji.key}}</div> 
           <div class="count">{{emoji.value.length}}</div>
       </div>
-      <app-emoji-keyboard (emojiSelected)="addReaction($event)"></app-emoji-keyboard>
     </div>
     <div *ngIf="message.file" class="file-attachment">
       <a [href]="message.file.url" download="{{ message.file.name }}" class="download-link" target="_blank">
