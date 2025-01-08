@@ -31,18 +31,18 @@
 
   .emoji-list {
     position: absolute;
-    top: 100%;
-    left: 0;
-    display: flex;
-    margin-top: 2px;
-    flex-wrap: wrap;
+    bottom: 0;
+    right: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);    margin-top: 2px;
     background: var(--background-color);
     border: 1px solid #ccc;
     padding: 5px;
     border-radius: 8px;
     z-index: 1000;
     width: 150px;
-    justify-content: space-around;
+    justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
