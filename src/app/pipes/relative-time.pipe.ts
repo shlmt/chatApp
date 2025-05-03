@@ -20,7 +20,7 @@ export class RelativeTimePipe {
     if (now.toDateString() == date.toDateString()) return `today ${this.datePipe.transform(date, 'HH:mm') ?? date.toLocaleDateString('he-IL')}`
     let yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1).toDateString()
     if (yesterday == date.toDateString()) return `yesterday ${this.datePipe.transform(date, 'HH:mm') ?? date.toLocaleDateString('he-IL')}`
-    if (date.getFullYear()==now.getFullYear()) return this.datePipe.transform(date, 'dd/MM HH:mm') ?? date.toLocaleDateString('he-IL')
+    if (date.getFullYear()==now.getFullYear()) return this.datePipe.transform(date, 'dd.MM HH:mm') ?? date.toLocaleDateString('he-IL')
     return date.toLocaleDateString('he-IL')
   }
 

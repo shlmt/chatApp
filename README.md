@@ -53,8 +53,7 @@ firebaseConfig: {
 ## 📚 Credits
 Inspired by [![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/YouTube_icon_%282013-2017%29.png/20px-YouTube_icon_%282013-2017%29.png)](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn)
 [this course](https://www.youtube.com/playlist?list=PLjMCGG-3Are1OsXa-TTGSZBjT5ij3HAVn). Thanks to the instructor for the amazing content! </br>
-*Note: This project includes personal solutions, modifications, and customizations beyond the original course content.*
-
+*Note: This project includes personal solutions, modifications and customizations, and **many new features** beyond the original course content.*
 ## 📷 Screenshots
 <img src="https://github.com/user-attachments/assets/d9479772-f235-479a-87d0-74dcb11b3d07" height="300px"/>  
 <img src="https://github.com/user-attachments/assets/b48a7870-baf5-4ef4-b8b4-963b8993d072" height="300px"/>
