@@ -8,5 +8,6 @@ export const environment = {
     messagingSenderId: "941156842101",
     appId: "1:941156842101:web:ac8e59be6692bd18f0563c",
     measurementId: "G-SZVKZ4TK5J"  
-  }
+  },
+  api_url: "https://gpt-integration-3ix1.onrender.com"
 };

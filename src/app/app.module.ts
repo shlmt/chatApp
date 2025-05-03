@@ -28,6 +28,7 @@ import { FilterReactionsPipe } from './pipes/filter-reactions.pipe';
 import { LinkTagPipe } from './pipes/link-tag.pipe';
 import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.directive';
 import { FocusOnLoadDirective } from './directives/focus-on-load.directive';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { FocusOnLoadDirective } from './directives/focus-on-load.directive';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
