@@ -105,7 +105,7 @@ export class ChatService {
 
       if (roomId === '0chat') {
         this.gptService
-          .askGpt(content, loggedUser.uid)
+          .askGpt(loggedUser.uid, content)
           .subscribe((response) => {
             const gptMessage = {
               body: response,
