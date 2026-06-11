@@ -15,7 +15,8 @@ A real-time chat application with multiple chat rooms, built with Angular, Fireb
 - **Links Display:** Detects URLs in text and renders them as clickable, styled links (securely sanitized by Angular).
 - **Keyboard Shortcuts:** Custom shortcuts for quick actions.
 - **Emoji Reactions:** React to messages with emojis using a custom-built emoji keyboard.
-- **GPT Chat Room:** Room for chatting with GPT via [my GenAI server](https://github.com/shlmt/gpt-integration).
+- **GPT Chat Room - בתחזוקה:** Room for chatting with GPT via [my GenAI server](https://github.com/shlmt/gpt-integration).
+- **NEW!!! Gemini Chat Room:** Room for chatting with Gemini.
 
 ## 🏆 Technologies
 
