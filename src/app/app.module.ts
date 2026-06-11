@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
@@ -22,13 +22,14 @@ import { DatePipe } from '@angular/common';
 import { RecordBtnComponent } from './components/record-btn/record-btn.component';
 import { InputChatComponent } from './components/input-chat/input-chat.component';
 import { SignInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmojiKeyboardComponent } from './components/emoji-keyboard/emoji-keyboard.component';
 import { FilterReactionsPipe } from './pipes/filter-reactions.pipe';
 import { LinkTagPipe } from './pipes/link-tag.pipe';
 import { CopyOnDoubleclickDirective } from './directives/copy-on-doubleclick.directive';
 import { FocusOnLoadDirective } from './directives/focus-on-load.directive';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiKeyDialogComponent } from './components/api-key-dialog/api-key-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LinkTagPipe,
     CopyOnDoubleclickDirective,
     FocusOnLoadDirective,
+    ApiKeyDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,9 +63,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

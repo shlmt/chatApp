@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>הכנס Gemini API Key</h2>
+
+<mat-dialog-content>
+  <p>נדרש API Key כדי להשתמש ב-Gemini AI</p>
+  <p>
+    קבל key חינם מ
+    <a href="https://aistudio.google.com/api-keys" target="_blank"
+      >Google AI Studio</a
+    >
+  </p>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>API Key</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="apiKey"
+        placeholder="הדבק את ה-API Key כאן"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="toggleVisibility()"
+        type="button"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('apiKey')?.hasError('required')">
+        API Key נדרש
+      </mat-error>
+      <mat-error *ngIf="form.get('apiKey')?.hasError('minlength')">
+        API Key חייב להיות לפחות 10 תווים
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">ביטול</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="!form.valid"
+  >
+    שמור
+  </button>
+</mat-dialog-actions>

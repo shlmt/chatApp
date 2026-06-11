@@ -1,0 +1,20 @@
+.full-width {
+  width: 100%;
+}
+
+p {
+  margin-bottom: 16px;
+  
+  a {
+    color: #1976d2;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+form {
+  margin: 16px 0;
+}

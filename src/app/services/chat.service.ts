@@ -1,29 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { from, Observable, of, pipe } from 'rxjs';
 import { ChatRoom, Message } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { map, switchMap, timestamp } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { UploadService } from './upload.service';
 import * as firebase from 'firebase';
 import { GptService } from './gpt.service';
+import { GeminiService } from './gemini.service';
+import { convertFileToBase64 } from '../utils/convert';
+import { MatDialog } from '@angular/material/dialog';
+import { ApiKeyDialogComponent } from '../components/api-key-dialog/api-key-dialog.component';
+
+const GPT_USER = {
+  uid: 'gpt',
+  username: 'gpt',
+  photoUrl:
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkjcFoADXGfO6r-rGC_LSR-dw_YmwoYjgjuQ&s',
+};
+
+const GEMINI_USER = {
+  uid: 'gemini',
+  username: 'gemini',
+  photoUrl:
+    'https://www.gstatic.com/marketing-cms/assets/images/a4/97/92c1ec494d129f3fb8d7caa91584/gemini-update.png=s48-fcrop64=1,00000000ffffffff-rw',
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatService {
-  private readonly GPT_USER = {
-    uid: 'gpt',
-    username: 'gpt',
-    photoUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkjcFoADXGfO6r-rGC_LSR-dw_YmwoYjgjuQ&s',
-  };
-
   constructor(
     private _db: AngularFirestore,
     private authService: AuthService,
     private uploadService: UploadService,
-    private gptService: GptService
+    private gptService: GptService,
+    private geminiService: GeminiService,
+    private dialog: MatDialog,
   ) {}
 
   private saveMessage = (roomId: string, msg: Message) => {
@@ -40,8 +53,8 @@ export class ChatService {
             const id = snap.payload.doc.id;
             const room = snap.payload.doc.data() as ChatRoom;
             return { ...room, id } as ChatRoom;
-          })
-        )
+          }),
+        ),
       );
   };
 
@@ -57,8 +70,8 @@ export class ChatService {
             const id = snap.payload.doc.id;
             const msg = snap.payload.doc.data() as Message;
             return { ...msg, id } as Message;
-          })
-        )
+          }),
+        ),
       );
   };
 
@@ -73,7 +86,7 @@ export class ChatService {
   public addMeasseageToRoom = (
     roomId: string,
     content: string,
-    file: File | null | undefined
+    file: File | null | undefined,
   ) => {
     const loggedUser = this.authService.getUserData();
     if (loggedUser) {
@@ -99,21 +112,27 @@ export class ChatService {
           },
           error: (err) => {
             console.error('Error uploading file:', err);
+            alert('העלאת תמונות לא עובדת כרגע, עמך הסליחה');
+            this.saveMessage(roomId, msg);
           },
         });
       } else this.saveMessage(roomId, msg);
 
-      if (roomId === '0chat') {
-        this.gptService
-          .askGpt(loggedUser.uid, content)
-          .subscribe((response) => {
-            const gptMessage = {
-              body: response,
-              sender: this.GPT_USER,
-              timestamp: new Date().getTime(),
-            } as Message;
-            this.saveMessage(roomId, gptMessage);
-          });
+      // if (roomId === '0chat') {
+      //   this.gptService
+      //     .askGpt(loggedUser.uid, content)
+      //     .subscribe((response) => {
+      //       const gptMessage = {
+      //         body: response,
+      //         sender: this.GPT_USER,
+      //         timestamp: new Date().getTime(),
+      //       } as Message;
+      //       this.saveMessage(roomId, gptMessage);
+      //     });
+      // }
+
+      if (roomId === '0gemini') {
+        this.handleGeminiMessage(roomId, content, file);
       }
     }
   };
@@ -122,7 +141,7 @@ export class ChatService {
     roomId: string,
     messageId: string,
     emoji: string,
-    isExist: boolean
+    isExist: boolean,
   ) => {
     const loggedUser = this.authService.getUserData();
     if (loggedUser) {
@@ -137,16 +156,78 @@ export class ChatService {
             reactions: {
               [emoji]: isExist
                 ? firebase.default.firestore.FieldValue.arrayRemove(
-                    loggedUser.uid
+                    loggedUser.uid,
                   )
                 : firebase.default.firestore.FieldValue.arrayUnion(
-                    loggedUser.uid
+                    loggedUser.uid,
                   ),
             },
           },
-          { merge: true }
+          { merge: true },
         );
       }
     }
+  };
+
+  private handleGeminiMessage = (
+    roomId: string,
+    content: string,
+    file?: File | null,
+  ) => {
+    let imageStream$: Observable<string | undefined>;
+
+    if (file && file.type.startsWith('image/')) {
+      imageStream$ = from(convertFileToBase64(file));
+    } else {
+      imageStream$ = of(undefined);
+    }
+
+    imageStream$
+      .pipe(
+        switchMap((img: string | undefined) =>
+          this.geminiService.askGemini(content, img),
+        ),
+      )
+      .subscribe({
+        next: (response) => {
+          const geminiMsg = {
+            body: response,
+            sender: GEMINI_USER,
+            timestamp: new Date().getTime(),
+          } as Message;
+
+          this.saveMessage(roomId, geminiMsg);
+        },
+        error: (err: Error) => {
+          const errorMessage =
+            err?.message || (typeof err === 'string' ? err : '');
+          console.error('התרחשה שגיאה בתהליך:', err, errorMessage);
+
+          if (err.message.includes('MISSING_API_KEY')) {
+            this.openApiKeyDialog(roomId, content, file);
+          } else {
+            console.error('שגיאה:', err.message);
+          }
+        },
+      });
+  };
+
+  private openApiKeyDialog = (
+    roomId: string,
+    content: string,
+    file?: File | null,
+  ) => {
+    const dialogRef = this.dialog.open(ApiKeyDialogComponent, {
+      width: '400px',
+      disableClose: false,
+    });
+
+    dialogRef.afterClosed().subscribe((apiKey: string | undefined) => {
+      if (apiKey) {
+        this.geminiService.saveApiKey(apiKey);
+
+        this.handleGeminiMessage(roomId, content, file);
+      }
+    });
   };
 }
